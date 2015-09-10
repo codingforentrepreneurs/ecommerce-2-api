@@ -1,7 +1,7 @@
 eCommerce 2 **API** Tutorial Series
 =========
 
-eCommerce 2 API is a step-by-step guide to impleming an RESTful API into your [eCommerce 2 project](https://github.com/codingforentrepreneurs/ecommerce-2) using the Django Rest Framework, Django Rest Framework JWT, Django CORS Headers, and more. 
+eCommerce 2 API is a step-by-step guide to implementing an RESTful API into your [eCommerce 2 project](https://github.com/codingforentrepreneurs/ecommerce-2) using the Django Rest Framework, Django Rest Framework JWT, Django CORS Headers, and more. 
 
 The project we use is [eCommerce 2](https://github.com/codingforentrepreneurs/ecommerce-2). Created by Team CFE @ [http://joincfe.com](http://joincfe.com).
 
@@ -13,7 +13,7 @@ The project we use is [eCommerce 2](https://github.com/codingforentrepreneurs/ec
 
 2. Products & Categories
 	- Create Serializers and API Views
-	- Product varaitions API (pricing + name)
+	- Product variations API (pricing + name)
 	- Implement product photos
 
 3. Querying & Filtering
@@ -32,7 +32,7 @@ The project we use is [eCommerce 2](https://github.com/codingforentrepreneurs/ec
 	- Django CORS Headers (for cross-origin HTTP requests)
 
 
-## Installation Guide
+## [API Guide](./blob/master/api_guide.md)
 
 
 
