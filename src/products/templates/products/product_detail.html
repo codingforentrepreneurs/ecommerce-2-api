@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+
+<script>
+{% block jquery %}
+
+
+function setPrice(){
+	var price = $(".variation_select option:selected").attr("data-price")
+
+	var sale_price = $(".variation_select option:selected").attr("data-sale-price")
+	if (sale_price != "" && sale_price != "None" && sale_price != null ) {
+	$("#price").html("<h3>" + sale_price + " <small class='og-price'>" + price  + "</small></h3>");
+	} else {
+	$("#price").html(price);
+	}
+}
+setPrice()
+
+$(".variation_select").change(function(){
+	setPrice()
+	// var img = $(".variation_select option:selected").attr("data-img")
+	// $("img").attr("src", img);
+
+})
+
+
+
+// ajax add to cart
+
+$("#submit-btn").click(function(event){
+	event.preventDefault();
+	var formData = $("#add-form").serialize();
+	console.log(formData);
+	$.ajax({
+		type: "GET", // "POST"
+		url: "{% url 'cart' %}",
+		data: formData,
+		success: function(data) {
+			showFlashMessage(data.flash_message);
+			updateCartItemCount();
+		}, 
+		error: function(response, error) {
+			// console.log(response)
+			// console.log(error)
+			$("#add-form").submit()
+		}
+	})
+
+	// $("#add-form").submit()
+
+})
+
+
+
+{% endblock %}
+</script>
+
+
+{% block content %}
+
+
+<div class='row'>
+
+<div class='col-sm-8'>
+<h2>{{ object.title }}</h2>
+
+{% if object.get_image_url %}
+<div>
+<img id='img' class='img-responsive' src='{{ object.get_image_url }}' />
+</div>
+{% endif %}
+
+
+
+<p class='lead'>
+{{ object.description }}
+</p>
+</div>
+
+
+<!-- Product Sidebar -->
+<div class='col-sm-4'>
+
+<form id='add-form' method='GET' action="{% url 'cart' %}">
+<p id='jquery-message' class='lead'>
+
+</p>
+	{% if object.variation_set.count > 1 %}
+	<h3 id='price'>{{ object.variation_set.first.price }}</h3>
+
+	<select name='item' class='form-control variation_select'>
+		{% for vari_obj in object.variation_set.all %}
+		<!-- <option data-img="http://www.spirit1059.com/pics/Feeds/Articles/2015611/118317/Beach.jpg" data-price="{{ vari_obj.price }}" value="{{ vari_obj.id }}">{{ vari_obj }}</option> -->
+		<option  data-sale-price="{{ vari_obj.sale_price }}" data-price="{{ vari_obj.price }}" value="{{ vari_obj.id }}">{{ vari_obj }}</option>
+		{% endfor %}
+		</select>
+
+	{% else %}
+		<input type="hidden" name='item' value='{{ object.variation_set.first.id }}' />
+			<h3 id='price'>{% if object.variation_set.first.sale_price %}
+			{{ object.variation_set.first.sale_price  }}
+			<small class='og-price'>{{ object.variation_set.first.price }}</small>
+			{% else %}
+			
+			{{ object.variation_set.first.price }}
+			{% endif %}
+		</h3>
+
+
+	{% endif %}
+	<br/>
+	<input class='form-control' type='number' name='qty' value='1' />
+<br/>
+<input id='submit-btn' type='submit' value='Add to Cart' class='btn btn-default' />
+</form>
+
+<br/>
+<hr/>
+<p>
+Share<br/>
+<a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">
+<i class="fa fa-facebook-square fa-3x"></i></a>
+
+<a href="#">
+<i class="fa fa-twitter-square fa-3x"></i></a>
+</p>
+
+<hr/>
+<h4>Related Products</h4>
+
+	<div class='row'>
+	{% for product in related %}
+
+		<div class='col-xs-6'>
+			{% include "products/product_thumbnail.html" with product=product price="True" %}
+		</div>
+		{% cycle '' '</div><div class="row">' %}
+	{% endfor %}
+
+		</div>
+
+
+</div>
+<!-- End Product Sidebar -->
+
+
+
+
+</div>
+
+
+
+{% endblock %}
