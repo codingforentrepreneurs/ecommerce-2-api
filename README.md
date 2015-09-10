@@ -32,7 +32,7 @@ The project we use is [eCommerce 2](https://github.com/codingforentrepreneurs/ec
 	- Django CORS Headers (for cross-origin HTTP requests)
 
 
-#### [API Guide](./blob/master/api_guide.md)
+#### [API Guide](./api_guide.md)
 
 
 
