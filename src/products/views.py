@@ -23,11 +23,14 @@ from .serializers import CategorySerializer
 
 # API CBVS
 
-class CategoryAPIListView(generics.ListAPIView):
+class CategoryListAPIView(generics.ListAPIView):
 	queryset = Category.objects.all()
 	serializer_class = CategorySerializer
 
 
+class CategoryRetrieveAPIView(generics.RetrieveAPIView):
+	queryset = Category.objects.all()
+	serializer_class = CategorySerializer
 
 
 

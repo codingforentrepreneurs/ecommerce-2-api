@@ -520,6 +520,26 @@
 	"buffers":
 	[
 		{
+			"file": "src/ecommerce2/settings/local.py",
+			"settings":
+			{
+				"buffer_size": 3999,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/products/models.py",
+			"settings":
+			{
+				"buffer_size": 4830,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "",
+			"file": "src/products/serialiers.py",
+			"file_size": 159,
+			"file_write_time": 130864034330000000,
 			"settings":
 			{
 				"buffer_size": 0,
@@ -566,8 +586,17 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/Users/jmitch/Desktop/ecommerce-2-api",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/ecommerce2/settings",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/products"
+	],
 	"file_history":
 	[
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/ecommerce2/settings/local.py",
+		"/Users/jmitch/Desktop/ecommerce-2-api/README.md",
 		"/Users/jmitch/Desktop/eCommerce 2 API.md",
 		"/Users/jmitch/Desktop/eCommerce 2 API.MD",
 		"/Users/jmitch/Desktop/ecapi/src/products/urls.py",
@@ -693,9 +722,7 @@
 		"/Users/jmitch/Dropbox/cfe/src/templates/projects/downloads_coming.html",
 		"/Users/jmitch/Dropbox/cfe/src/templates/projects/downloads_old.html",
 		"/Users/jmitch/Dropbox/cfe/src/templates/projects/downloads_project.html",
-		"/Users/jmitch/Dropbox/cfe/src/templates/projects/single_backup.html",
-		"/Users/jmitch/Dropbox/cfe/src/templates/projects/view.html",
-		"/Users/jmitch/Dropbox/cfe/src/templates/html_head.html"
+		"/Users/jmitch/Dropbox/cfe/src/templates/projects/single_backup.html"
 	],
 	"find":
 	{
@@ -874,11 +901,72 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
+					"file": "src/ecommerce2/settings/local.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3999,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1523,
+								1537
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 485.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/products/models.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4830,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3520,
+								3528
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1684.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/products/serialiers.py",
 					"semi_transient": false,
 					"settings":
 					{
@@ -895,7 +983,8 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"auto_complete": false,
+							"syntax": "Packages/Python/Python.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

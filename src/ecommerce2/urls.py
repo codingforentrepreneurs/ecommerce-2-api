@@ -10,7 +10,8 @@ from orders.views import (
                     OrderList, 
                     OrderDetail)
 from products.views import (
-        CategoryAPIListView
+        CategoryListAPIView,
+        CategoryRetrieveAPIView,
     )
 
 urlpatterns = [
@@ -37,7 +38,8 @@ urlpatterns = [
 
 #API Patterns
 urlpatterns += [
-    url(r'^api/categories/$', CategoryAPIListView.as_view(), name='categories_api'),
+    url(r'^api/categories/$', CategoryListAPIView.as_view(), name='categories_api'),
+    url(r'^api/categories/(?P<pk>\d+)/$', CategoryRetrieveAPIView.as_view(), name='category_detail_api'),
 ]
 
 
