@@ -9,6 +9,9 @@ from orders.views import (
                     UserAddressCreateView, 
                     OrderList, 
                     OrderDetail)
+from products.views import (
+        CategoryAPIListView
+    )
 
 urlpatterns = [
     # Examples:
@@ -31,6 +34,13 @@ urlpatterns = [
     url(r'^checkout/final/$', CheckoutFinalView.as_view(), name='checkout_final'),
 
 ]
+
+#API Patterns
+urlpatterns += [
+    url(r'^api/categories/$', CategoryAPIListView.as_view(), name='categories_api'),
+]
+
+
 
 if settings.DEBUG:
 	urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
