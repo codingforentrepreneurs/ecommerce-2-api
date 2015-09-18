@@ -17,7 +17,12 @@ from rest_framework import generics
 from .forms import VariationInventoryFormSet, ProductFilterForm
 from .mixins import StaffRequiredMixin
 from .models import Product, Variation, Category
-from .serializers import CategorySerializer, ProductSerializer, ProductDetailSerializer
+from .serializers import (
+		CategorySerializer, 
+		ProductSerializer,
+		 ProductDetailSerializer, 
+		 ProductDetailUpdateSerializer
+		)
 
 
 
@@ -41,6 +46,11 @@ class ProductListAPIView(generics.ListAPIView):
 class ProductRetrieveAPIView(generics.RetrieveAPIView):
 	queryset = Product.objects.all()
 	serializer_class = ProductDetailSerializer
+
+
+# class ProductCreateAPIView(generics.CreateAPIView):
+# 	queryset = Product.objects.all()
+# 	serializer_class = ProductDetailUpdateSerializer
 
 
 
