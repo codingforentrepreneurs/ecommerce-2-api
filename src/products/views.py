@@ -11,6 +11,7 @@ from django.utils import timezone
 from django_filters import FilterSet, CharFilter, NumberFilter
 
 from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 
 # Create your views here.
 
@@ -34,6 +35,7 @@ class CategoryListAPIView(generics.ListAPIView):
 
 
 class CategoryRetrieveAPIView(generics.RetrieveAPIView):
+	permission_classes = [IsAuthenticatedOrReadOnly]
 	queryset = Category.objects.all()
 	serializer_class = CategorySerializer
 
