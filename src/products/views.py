@@ -14,6 +14,9 @@ from rest_framework import filters
 from rest_framework import generics
 from rest_framework.authentication import BasicAuthentication, SessionAuthentication
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework.response import Response
+from rest_framework.reverse import reverse as api_reverse
+from rest_framework.views import APIView
 
 # Create your views here.
 from .filters import ProductFilter
@@ -33,6 +36,25 @@ from .serializers import (
 
 
 # API CBVS
+
+class APIHomeView(APIView):
+	# authentication_classes = [SessionAuthentication]
+	# permission_classes = [IsAuthenticated]
+	def get(self, request, format=None):
+		data = {
+			"products": {
+				"count": Product.objects.all().count(),
+				"url": api_reverse("products_api", request=request)
+			},
+			"categories": {
+				"count": Category.objects.all().count(),
+				"url": api_reverse("categories_api", request=request)
+			},
+		}
+		return Response(data)
+
+
+
 
 class CategoryListAPIView(generics.ListAPIView):
 	queryset = Category.objects.all()
