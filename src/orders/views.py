@@ -20,11 +20,18 @@ from .models import UserAddress, UserCheckout, Order
 
 User = get_user_model()
 
+
+""" 
+
+Notes for changes.
+
+
+"""
 class UserCheckoutMixin(object):
 
 	def user_failure(self, message=None):
 		data = {
-			"message": "There was an error. Please try again",
+			"message": "There was an error. Please try again.",
 			"success": False
 		}
 		if message:
@@ -39,22 +46,21 @@ class UserCheckoutMixin(object):
 				return self.user_failure(message="This user already exists, please login.")
 
 		data = {}
+		user_checkout = None
 		if user and not email:
 			if user.is_authenticated():
 				user_checkout = UserCheckout.objects.get_or_create(user=user, email=user.email)[0] #(instance, created)
-				data["token"] = user_checkout.get_client_token()
-				data["braintree_id"] = user_checkout.get_braintree_id
-				data["user_checkout_id"] = user_checkout.id
-			else:
-				#return error
-				pass
-		elif not user and email:
-			user_checkout = UserCheckout.objects.get_or_create(email=email)[0] #(instance, created)
 			
-		elif user and email:
-			user_checkout = False
+		elif email:
+			try:
+				user_checkout = UserCheckout.objects.get_or_create(email=email)[0]
+				if user:
+					user_checkout.user = user
+					user_checkout.save()
+			except:
+				pass #(instance, created)
 		else:
-			user_checkout = False
+			pass
 
 		if user_checkout:
 			data["token"] = user_checkout.get_client_token()
@@ -74,8 +80,15 @@ class UserCheckoutAPI(UserCheckoutMixin, APIView):
 	def post(self, request, format=None):
 		data = {}
 		email = request.data.get("email")
-		if email:
+		if request.user.is_authenticated():
+			if email == request.user.email:
+				data = self.get_checkout_data(user=request.user, email=email)
+			else:
+				data = self.get_checkout_data(user=request.user)
+		elif email and not request.user.is_authenticated():
 			data = self.get_checkout_data(email=email)
+		else:
+			data = self.user_failure(message="Make sure you are authenticated or using a valid email.")
 		return Response(data)
 
 
