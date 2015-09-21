@@ -10,7 +10,15 @@ from django.views.generic.base import View
 from django.views.generic.detail import SingleObjectMixin, DetailView
 from django.views.generic.edit import FormMixin
 
-# Create your views here.
+from rest_framework import filters
+from rest_framework import generics
+from rest_framework.authentication import BasicAuthentication, SessionAuthentication
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework.response import Response
+from rest_framework.reverse import reverse as api_reverse
+from rest_framework.views import APIView
+
+
 
 from orders.forms import GuestCheckoutForm
 from orders.mixins import CartOrderMixin
@@ -20,6 +28,33 @@ from products.models import Variation
 
 
 from .models import Cart, CartItem
+
+
+
+class CartAPIView(APIView):
+	# authentication_classes = [SessionAuthentication]
+	# permission_classes = [IsAuthenticated]
+
+	def get_cart(self):
+		cart_id = self.request.GET.get("cart_id")
+		try:
+			cart = Cart.objects.get(id=cart_id)
+		except:
+			cart = Cart.objects.all().first()
+		return cart
+
+
+	def get(self, request, format=None):
+		cart = self.get_cart()
+
+		data = {
+			"cart" : cart.id,
+			"total": cart.total,
+			"subtotal": cart.subtotal,
+			"tax_total": cart.tax_total,
+			"items": cart.items.count()
+		}
+		return Response(data)
 
 
 
