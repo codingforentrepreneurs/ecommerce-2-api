@@ -1,3 +1,5 @@
+import ast
+import base64
 import braintree
 
 from django.conf import settings
@@ -34,20 +36,48 @@ from .models import Cart, CartItem
 class CartAPIView(APIView):
 	# authentication_classes = [SessionAuthentication]
 	# permission_classes = [IsAuthenticated]
+	token = None
+	cart = None
+	def create_token(self, cart_id):
+		data = {
+			"cart_id": cart_id
+		}
+		token = base64.b64encode(str(data))
+		self.token = token
+		return token
 
 	def get_cart(self):
-		cart_id = self.request.GET.get("cart_id")
-		try:
-			cart = Cart.objects.get(id=cart_id)
-		except:
-			cart = Cart.objects.all().first()
-		return cart
+		token_data = self.request.GET.get("token")
+		cart_obj = None
+		if token_data:
+			token_decoded = base64.b64decode(token_data)
+			token_dict = ast.literal_eval(token_decoded)
+			cart_id = token_dict.get("cart_id")
+			try:
+				cart_obj = Cart.objects.get(id=cart_id)
+				
+			except:
+				pass
+			self.token = token_data
+		
+		if cart_obj == None:
+			cart = Cart()
+			cart.tax_percentage = 0.075
+			if self.request.user.is_authenticated():
+				cart.user = self.request.user
+			cart.save()
+			self.create_token(cart.id)
+			cart_obj = cart
+
+		return cart_obj
 
 
 	def get(self, request, format=None):
 		cart = self.get_cart()
-
+		self.cart = cart
+		#token = self.create_token(cart.id)
 		data = {
+			"token": self.token,
 			"cart" : cart.id,
 			"total": cart.total,
 			"subtotal": cart.subtotal,
