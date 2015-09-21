@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import datetime
 import os
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 #root of project
@@ -173,7 +175,10 @@ REST_FRAMEWORK = {
 }
 
 JWT_AUTH = {
-    "JWT_RESPONSE_PAYLOAD_HANDLER": "ecommerce2.utils.jwt_response_payload_handler"
+    "JWT_RESPONSE_PAYLOAD_HANDLER": 
+            "ecommerce2.utils.jwt_response_payload_handler",
+    "JWT_EXPIRATION_DELTA": datetime.timedelta(seconds=30000),
+    "JWT_ALLOW_REFRESH": True, #False
 }
 
 
