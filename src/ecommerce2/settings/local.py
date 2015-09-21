@@ -165,13 +165,16 @@ REST_FRAMEWORK = {
     ),
       'DEFAULT_AUTHENTICATION_CLASSES': (
         #'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        #'rest_framework.authentication.SessionAuthentication',
+        "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
     ),
       'DEFAULT_PAGINATION_CLASS': 'products.pagination.ProductPagination',
       "SEARCH_PARAM" : "q"
 }
 
-
+JWT_AUTH = {
+    "JWT_RESPONSE_PAYLOAD_HANDLER": "ecommerce2.utils.jwt_response_payload_handler"
+}
 
 
 
