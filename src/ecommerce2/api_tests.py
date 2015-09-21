@@ -9,6 +9,9 @@ login_url = base_url + "auth/token/"
 products_url = base_url + "products/"
 
 refresh_url = login_url + "refresh/"
+
+
+cart_url = base_url + "cart/"
 #requests.get
 #requests.post(login_url, data=None, headers=None, params=None)
 
@@ -29,6 +32,7 @@ token = json_data["token"]
 print token
 
 headers = {
+	"Content-Type": "application/json",
 	"Authorization": "JWT %s" %(token),
 }
 
@@ -49,6 +53,25 @@ refresh_r = requests.post(refresh_url, data=data)
 print refresh_r.json()
 
 token = refresh_r.json()["token"]
+
+
+
+cart_r = requests.get(cart_url)
+cart_token = cart_r.json()["token"]
+
+
+new_cart_url = cart_url + "?token=" + cart_token + "&item=10&qty=3"
+
+new_cart_r = requests.get(new_cart_url)
+print new_cart_r.json()
+
+
+
+
+
+
+
+
 
 
 
