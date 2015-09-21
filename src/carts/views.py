@@ -30,7 +30,7 @@ from products.models import Variation
 
 
 from .models import Cart, CartItem
-
+from .serializers import CartItemSerializer
 
 
 class CartUpdateAPIMixin(object):
@@ -110,13 +110,16 @@ class CartAPIView(CartUpdateAPIMixin, APIView):
 		self.cart = cart
 		self.update_cart()
 		#token = self.create_token(cart.id)
+		items = CartItemSerializer(cart.cartitem_set.all(), many=True)
+		print cart.items.all()
 		data = {
 			"token": self.token,
 			"cart" : cart.id,
 			"total": cart.total,
 			"subtotal": cart.subtotal,
 			"tax_total": cart.tax_total,
-			"items": cart.items.count()
+			"count": cart.items.count(),
+			"items": items.data,
 		}
 		return Response(data)
 
