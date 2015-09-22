@@ -14,6 +14,8 @@ from carts.views import (
 from orders.views import (
                     AddressSelectFormView, 
                     UserAddressCreateView,
+                    UserAddressCreateAPIView,
+                    UserAddressListAPIView,
                     UserCheckoutAPI,
                     OrderList, 
                     OrderDetail)
@@ -52,10 +54,13 @@ urlpatterns = [
 #API Patterns
 urlpatterns += [
     url(r'^api/$', APIHomeView.as_view(), name='home_api'),
+
     url(r'^api/cart/$', CartAPIView.as_view(), name='cart_api'),
     url(r'^api/checkout/$', CheckoutAPIView.as_view(), name='checkout_api'),
     url(r'^api/auth/token/$', 'rest_framework_jwt.views.obtain_jwt_token'),
     url(r'^api/auth/token/refresh/$', 'rest_framework_jwt.views.refresh_jwt_token'),
+    url(r'^api/user/address/$', UserAddressListAPIView.as_view(), name='user_address_list_api'),
+    url(r'^api/user/address/create/$', UserAddressCreateAPIView.as_view(), name='user_address_create_api'),
     url(r'^api/user/checkout/$', UserCheckoutAPI.as_view(), name='user_checkout_api'),
     url(r'^api/categories/$', CategoryListAPIView.as_view(), name='categories_api'),
     url(r'^api/categories/(?P<pk>\d+)/$', CategoryRetrieveAPIView.as_view(), name='category_detail_api'),

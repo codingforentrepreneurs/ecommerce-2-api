@@ -7,7 +7,7 @@ from django.views.generic.detail import DetailView
 from  django.views.generic.list import ListView
 # Create your views here.
 
-
+from rest_framework.generics import CreateAPIView, ListAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -17,6 +17,7 @@ from rest_framework.views import APIView
 from .forms import AddressForm, UserAddressForm
 from .mixins import CartOrderMixin, LoginRequiredMixin
 from .models import UserAddress, UserCheckout, Order
+from .serializers import UserAddressSerializer
 
 User = get_user_model()
 
@@ -27,8 +28,21 @@ Notes for changes.
 
 
 """
-class UserCheckoutMixin(object):
 
+
+class UserAddressCreateAPIView(CreateAPIView):
+	model = UserAddress
+	serializer_class = UserAddressSerializer
+
+
+class UserAddressListAPIView(ListAPIView):
+	model = UserAddress
+	queryset = UserAddress.objects.all()
+	serializer_class = UserAddressSerializer
+
+
+
+class UserCheckoutMixin(object):
 	def user_failure(self, message=None):
 		data = {
 			"message": "There was an error. Please try again.",
