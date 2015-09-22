@@ -26,7 +26,7 @@ from rest_framework.views import APIView
 from orders.forms import GuestCheckoutForm
 from orders.mixins import CartOrderMixin
 from orders.models import UserCheckout, Order, UserAddress
-
+from orders.serializers import OrderSerializer
 from products.models import Variation
 
 
@@ -40,6 +40,19 @@ class CheckoutAPIView(CartTokenMixin, APIView):
 	def get(self, request, format=None):
 		data, cart_obj, response_status = self.get_cart_from_token()
 
+		user_checkout_id = request.GET.get("checkout_id")
+		try:
+			user_checkout = UserCheckout.objects.get(id = int(user_checkout_id))
+		except:
+			user_checkout = None
+
+		if user_checkout == None:
+			data = {
+				"message": "A user or guest user is required to continue."
+			}
+			response_status = status.HTTP_400_BAD_REQUEST
+			return Response(data, status=response_status)
+
 		if cart_obj:
 			if cart_obj.items.count() == 0:
 				data = {
@@ -48,6 +61,8 @@ class CheckoutAPIView(CartTokenMixin, APIView):
 				response_status = status.HTTP_400_BAD_REQUEST
 			else:
 				order, created = Order.objects.get_or_create(cart=cart_obj)
+				if not order.user:
+					order.user = user_checkout
 				if order.is_complete:
 					order.cart.is_complete()
 					data = {
@@ -55,14 +70,7 @@ class CheckoutAPIView(CartTokenMixin, APIView):
 					}
 					return Response(data)
 				order.save()
-				data["order"] = order.id
-				#data["user"] = order.user
-				#data["shipping_address"] = order.shipping_address
-				# data["billing_address"] = order.billing_address
-				data["shipping_total_price"] = order.shipping_total_price
-				data["subtotal"] = cart_obj.total
-				data["total"] = order.order_total
-
+				data = OrderSerializer(order).data
 		return Response(data, status=response_status)
 
 
