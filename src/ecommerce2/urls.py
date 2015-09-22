@@ -6,6 +6,7 @@ from django.contrib import admin
 from carts.views import (
         CartAPIView,
         CartView, 
+        CheckoutAPIView,
         CheckoutView, 
         CheckoutFinalView,
         ItemCountView, 
@@ -52,6 +53,7 @@ urlpatterns = [
 urlpatterns += [
     url(r'^api/$', APIHomeView.as_view(), name='home_api'),
     url(r'^api/cart/$', CartAPIView.as_view(), name='cart_api'),
+    url(r'^api/checkout/$', CheckoutAPIView.as_view(), name='checkout_api'),
     url(r'^api/auth/token/$', 'rest_framework_jwt.views.obtain_jwt_token'),
     url(r'^api/auth/token/refresh/$', 'rest_framework_jwt.views.refresh_jwt_token'),
     url(r'^api/user/checkout/$', UserCheckoutAPI.as_view(), name='user_checkout_api'),

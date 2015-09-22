@@ -14,6 +14,7 @@ from django.views.generic.edit import FormMixin
 
 from rest_framework import filters
 from rest_framework import generics
+from rest_framework import status
 from rest_framework.authentication import BasicAuthentication, SessionAuthentication
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
@@ -35,6 +36,33 @@ from .serializers import CartItemSerializer
 
 
 
+
+
+class CheckoutAPIView(TokenMixin, APIView):
+	def get(self, request, format=None):
+		cart_token = request.GET.get("cart_token")
+		message = "This requires a vaild cart & cart token."
+		
+		cart_token_data = self.parse_token(cart_token)
+		cart_id = cart_token_data.get("cart_id")
+		try:
+			cart = Cart.objects.get(id=int(cart_id))
+		except:
+			cart = None
+
+		if cart == None:
+			data = {
+				"success": False,
+				"message": message,
+			}
+			return Response(data, status=status.HTTP_400_BAD_REQUEST)
+		else:
+			data = {
+				"cart": cart.id,
+				"success": True,
+				
+			}
+			return Response(data)
 
 
 
@@ -62,7 +90,7 @@ class CartAPIView(TokenMixin, CartUpdateAPIMixin, APIView):
 				cart.user = self.request.user
 			cart.save()
 			data = {
-				"cart_id": cart.id
+				"cart_id": str(cart.id)
 			}
 			self.create_token(data)
 			cart_obj = cart
