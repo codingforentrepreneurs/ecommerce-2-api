@@ -2,6 +2,11 @@ import ast
 import base64
 
 
+from rest_framework import status
+from .models import Cart
+
+
+
 class CartUpdateAPIMixin(object):
 	def update_cart(self, *args, **kwargs):
 		request = self.request
@@ -54,3 +59,46 @@ class TokenMixin(object):
 			return token_dict
 		except:
 			return {}
+
+
+
+
+class CartTokenMixin(object):
+	def get_cart_from_token(self):
+		request = self.request
+		response_status = status.HTTP_200_OK
+		cart_token = request.GET.get("cart_token")
+		message = "This requires a vaild cart & cart token."
+		
+		cart_token_data = self.parse_token(cart_token)
+		cart_id = cart_token_data.get("cart_id")
+		try:
+			cart = Cart.objects.get(id=int(cart_id))
+		except:
+			cart = None
+
+		if cart == None:
+			data = {
+				"success": False,
+				"message": message,
+			}
+			response_status = status.HTTP_400_BAD_REQUEST
+			#return Response(data, status=status.HTTP_400_BAD_REQUEST)
+		else:
+			data = {
+				"cart": cart.id,
+				"success": True,
+				
+			}
+			#return Response(data)
+
+		return data, response_status
+
+
+
+
+
+
+
+
+

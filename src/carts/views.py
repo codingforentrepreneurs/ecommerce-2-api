@@ -30,39 +30,17 @@ from orders.models import UserCheckout, Order, UserAddress
 from products.models import Variation
 
 
-from .mixins import TokenMixin, CartUpdateAPIMixin
+from .mixins import TokenMixin, CartUpdateAPIMixin, CartTokenMixin
 from .models import Cart, CartItem
 from .serializers import CartItemSerializer
 
 
 
-
-
-class CheckoutAPIView(TokenMixin, APIView):
+class CheckoutAPIView(CartTokenMixin, TokenMixin, APIView):
 	def get(self, request, format=None):
-		cart_token = request.GET.get("cart_token")
-		message = "This requires a vaild cart & cart token."
-		
-		cart_token_data = self.parse_token(cart_token)
-		cart_id = cart_token_data.get("cart_id")
-		try:
-			cart = Cart.objects.get(id=int(cart_id))
-		except:
-			cart = None
-
-		if cart == None:
-			data = {
-				"success": False,
-				"message": message,
-			}
-			return Response(data, status=status.HTTP_400_BAD_REQUEST)
-		else:
-			data = {
-				"cart": cart.id,
-				"success": True,
-				
-			}
-			return Response(data)
+		data, response_status = self.get_cart_from_token()
+		#data["item"]= 123
+		return Response(data, status=response_status)
 
 
 
