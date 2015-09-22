@@ -38,8 +38,7 @@ from .serializers import CartItemSerializer
 
 class CheckoutAPIView(CartTokenMixin, TokenMixin, APIView):
 	def get(self, request, format=None):
-		data, response_status = self.get_cart_from_token()
-		#data["item"]= 123
+		data, cart_obj, response_status = self.get_cart_from_token()
 		return Response(data, status=response_status)
 
 
