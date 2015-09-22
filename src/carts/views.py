@@ -29,66 +29,28 @@ from orders.models import UserCheckout, Order, UserAddress
 from products.models import Variation
 
 
+from .mixins import TokenMixin, CartUpdateAPIMixin
 from .models import Cart, CartItem
 from .serializers import CartItemSerializer
 
 
-class CartUpdateAPIMixin(object):
-	def update_cart(self, *args, **kwargs):
-		request = self.request
-		cart = self.cart
-		if cart:
-			item_id = request.GET.get("item")
-			delete_item = request.GET.get("delete", False)
-			flash_message = ""
-			item_added = False
-			if item_id:
-				item_instance = get_object_or_404(Variation, id=item_id)
-				qty = request.GET.get("qty", 1)
-				try:
-					if int(qty) < 1:
-						delete_item = True
-				except:
-					raise Http404
-				cart_item, created = CartItem.objects.get_or_create(cart=cart, item=item_instance)
-				if created:
-					flash_message = "Successfully added to the cart"
-					item_added = True
-				if delete_item:
-					flash_message = "Item removed successfully."
-					cart_item.delete()
-				else:
-					if not created:
-						flash_message = "Quantity has been updated successfully."
-					cart_item.quantity = qty
-					cart_item.save()
 
 
 
 
-class CartAPIView(CartUpdateAPIMixin, APIView):
+
+class CartAPIView(TokenMixin, CartUpdateAPIMixin, APIView):
 	# authentication_classes = [SessionAuthentication]
 	# permission_classes = [IsAuthenticated]
-	token = None
 	cart = None
-	def create_token(self, cart_id):
-		data = {
-			"cart_id": cart_id
-		}
-		token = base64.b64encode(str(data))
-		self.token = token
-		return token
-
 	def get_cart(self):
 		token_data = self.request.GET.get("token")
 		cart_obj = None
 		if token_data:
-			token_decoded = base64.b64decode(token_data)
-			token_dict = ast.literal_eval(token_decoded)
+			token_dict = self.parse_token(token=token_data)
 			cart_id = token_dict.get("cart_id")
 			try:
 				cart_obj = Cart.objects.get(id=cart_id)
-				
 			except:
 				pass
 			self.token = token_data
@@ -99,7 +61,10 @@ class CartAPIView(CartUpdateAPIMixin, APIView):
 			if self.request.user.is_authenticated():
 				cart.user = self.request.user
 			cart.save()
-			self.create_token(cart.id)
+			data = {
+				"cart_id": cart.id
+			}
+			self.create_token(data)
 			cart_obj = cart
 
 		return cart_obj

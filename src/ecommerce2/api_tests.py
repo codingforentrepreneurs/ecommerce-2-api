@@ -60,7 +60,7 @@ cart_r = requests.get(cart_url)
 cart_token = cart_r.json()["token"]
 
 
-new_cart_url = cart_url + "?token=" + cart_token + "&item=10&qty=3"
+new_cart_url = cart_url + "?token=" + cart_token + "&item=10&qty=3&delete=True"
 
 new_cart_r = requests.get(new_cart_url)
 print new_cart_r.json()
