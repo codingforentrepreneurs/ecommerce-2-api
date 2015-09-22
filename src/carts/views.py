@@ -36,7 +36,7 @@ from .serializers import CartItemSerializer
 
 
 
-class CheckoutAPIView(CartTokenMixin, TokenMixin, APIView):
+class CheckoutAPIView(CartTokenMixin, APIView):
 	def get(self, request, format=None):
 		data, cart_obj, response_status = self.get_cart_from_token()
 		return Response(data, status=response_status)
@@ -44,22 +44,13 @@ class CheckoutAPIView(CartTokenMixin, TokenMixin, APIView):
 
 
 
-class CartAPIView(TokenMixin, CartUpdateAPIMixin, APIView):
+class CartAPIView(CartTokenMixin, CartUpdateAPIMixin, APIView):
 	# authentication_classes = [SessionAuthentication]
 	# permission_classes = [IsAuthenticated]
+	token_param = "token"
 	cart = None
 	def get_cart(self):
-		token_data = self.request.GET.get("token")
-		cart_obj = None
-		if token_data:
-			token_dict = self.parse_token(token=token_data)
-			cart_id = token_dict.get("cart_id")
-			try:
-				cart_obj = Cart.objects.get(id=cart_id)
-			except:
-				pass
-			self.token = token_data
-		
+		data, cart_obj, response_status = self.get_cart_from_token()
 		if cart_obj == None:
 			cart = Cart()
 			cart.tax_percentage = 0.075
