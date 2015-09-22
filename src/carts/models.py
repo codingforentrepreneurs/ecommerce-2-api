@@ -50,6 +50,7 @@ class Cart(models.Model):
 	tax_percentage  = models.DecimalField(max_digits=10, decimal_places=5, default=0.085)
 	tax_total = models.DecimalField(max_digits=50, decimal_places=2, default=0.00)
 	total = models.DecimalField(max_digits=50, decimal_places=2, default=0.00)
+	active = models.BooleanField(default=True)
 	# discounts
 	# shipping
 
@@ -63,6 +64,10 @@ class Cart(models.Model):
 		for item in items:
 			subtotal += item.line_item_total
 		self.subtotal = "%.2f" %(subtotal)
+		self.save()
+
+	def is_complete(self):
+		self.active = False
 		self.save()
 
 

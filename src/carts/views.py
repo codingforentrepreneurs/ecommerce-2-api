@@ -39,6 +39,30 @@ from .serializers import CartItemSerializer
 class CheckoutAPIView(CartTokenMixin, APIView):
 	def get(self, request, format=None):
 		data, cart_obj, response_status = self.get_cart_from_token()
+
+		if cart_obj:
+			if cart_obj.items.count() == 0:
+				data = {
+					"message": "Your cart is Empty."
+				}
+				response_status = status.HTTP_400_BAD_REQUEST
+			else:
+				order, created = Order.objects.get_or_create(cart=cart_obj)
+				if order.is_complete:
+					order.cart.is_complete()
+					data = {
+						"message": "This order has been completed."
+					}
+					return Response(data)
+				order.save()
+				data["order"] = order.id
+				#data["user"] = order.user
+				#data["shipping_address"] = order.shipping_address
+				# data["billing_address"] = order.billing_address
+				data["shipping_total_price"] = order.shipping_total_price
+				data["subtotal"] = cart_obj.total
+				data["total"] = order.order_total
+
 		return Response(data, status=response_status)
 
 
@@ -51,7 +75,7 @@ class CartAPIView(CartTokenMixin, CartUpdateAPIMixin, APIView):
 	cart = None
 	def get_cart(self):
 		data, cart_obj, response_status = self.get_cart_from_token()
-		if cart_obj == None:
+		if cart_obj == None or not cart_obj.active:
 			cart = Cart()
 			cart.tax_percentage = 0.075
 			if self.request.user.is_authenticated():
