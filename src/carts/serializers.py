@@ -20,10 +20,10 @@ from .mixins import TokenMixin
 """
 class CheckoutSerializer(TokenMixin, serializers.Serializer):
 	checkout_token = serializers.CharField()
-	user_checkout_id =serializers.IntegerField(required=False)
 	billing_address = serializers.IntegerField()
 	shipping_address = serializers.IntegerField()
 	cart_token = serializers.CharField()
+	user_checkout_id =serializers.IntegerField(required=False)
 	cart_id = serializers.IntegerField(required=False)
 
 	def validate(self, data):
