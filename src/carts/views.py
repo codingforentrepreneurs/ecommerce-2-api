@@ -40,7 +40,13 @@ class CheckoutAPIView(CartTokenMixin, APIView):
 	def get(self, request, format=None):
 		data, cart_obj, response_status = self.get_cart_from_token()
 
-		user_checkout_id = request.GET.get("checkout_id")
+		user_checkout_token = self.request.GET.get("checkout_token")
+		user_checkout_data = self.parse_token(user_checkout_token)
+		user_checkout_id = user_checkout_data["user_checkout_id"]
+		billing_address = self.request.GET.get("billing")
+		shipping_address = self.request.GET.get("shipping")
+		billing_obj, shipping_obj = None, None
+		
 		try:
 			user_checkout = UserCheckout.objects.get(id = int(user_checkout_id))
 		except:
@@ -52,6 +58,26 @@ class CheckoutAPIView(CartTokenMixin, APIView):
 			}
 			response_status = status.HTTP_400_BAD_REQUEST
 			return Response(data, status=response_status)
+
+		if billing_address:
+			try:
+				billing_obj = UserAddress.objects.get(user=user_checkout, id=int(billing_address))
+			except:
+				pass
+		
+		if shipping_address:
+			try:
+				shipping_obj = UserAddress.objects.get(user=user_checkout, id=int(shipping_address))
+			except:
+				pass
+
+		if not billing_obj or not shipping_obj:
+			data = {
+				"message": "A valid billing or shipping is needed."
+			}
+			response_status = status.HTTP_400_BAD_REQUEST
+			return Response(data, status=response_status)
+
 
 		if cart_obj:
 			if cart_obj.items.count() == 0:
@@ -69,6 +95,8 @@ class CheckoutAPIView(CartTokenMixin, APIView):
 						"message": "This order has been completed."
 					}
 					return Response(data)
+				order.billing_address = billing_obj
+				order.shipping_address = shipping_obj
 				order.save()
 				data = OrderSerializer(order).data
 		return Response(data, status=response_status)
