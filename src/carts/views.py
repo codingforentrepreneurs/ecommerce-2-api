@@ -42,6 +42,7 @@ class CheckoutAPIView(CartTokenMixin, APIView):
 		data = request.data
 		serializer = CheckoutSerializer(data=data)
 		if serializer.is_valid(raise_exception=True):
+			print "valid data!!@!@"
 			print serializer.data
 
 		response = {

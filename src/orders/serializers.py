@@ -29,6 +29,7 @@ class UserAddressSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = UserAddress
 		fields = [
+			"id",
 			"user",
 			"type",
 			"street",
