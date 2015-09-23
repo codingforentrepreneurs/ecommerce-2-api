@@ -32,17 +32,30 @@ from products.models import Variation
 
 from .mixins import TokenMixin, CartUpdateAPIMixin, CartTokenMixin
 from .models import Cart, CartItem
-from .serializers import CartItemSerializer
+from .serializers import CartItemSerializer, CheckoutSerializer
 
 
 
 class CheckoutAPIView(CartTokenMixin, APIView):
+
+	def post(self, request, format=None):
+		data = request.data
+		serializer = CheckoutSerializer(data=data)
+		if serializer.is_valid(raise_exception=True):
+			print serializer.data
+
+		response = {
+			"data": "none"
+		}
+		return Response(response)
+
+
 	def get(self, request, format=None):
 		data, cart_obj, response_status = self.get_cart_from_token()
 
 		user_checkout_token = self.request.GET.get("checkout_token")
 		user_checkout_data = self.parse_token(user_checkout_token)
-		user_checkout_id = user_checkout_data["user_checkout_id"]
+		user_checkout_id = user_checkout_data.get("user_checkout_id")
 		billing_address = self.request.GET.get("billing")
 		shipping_address = self.request.GET.get("shipping")
 		billing_obj, shipping_obj = None, None

@@ -7,6 +7,32 @@ from products.models import Variation
 from .models import CartItem
 
 
+"""
+
+{
+"cart_token": "12345", 
+"billing_address": 1,
+"shipping_address": 1,
+"checkout_token": "12345",
+}
+
+"""
+class CheckoutSerializer(serializers.Serializer):
+	checkout_token = serializers.CharField()
+	user_checkout_id =serializers.IntegerField(required=False)
+	billing_address = serializers.IntegerField()
+	shipping_address = serializers.IntegerField()
+	cart_token = serializers.CharField()
+	cart_id = serializers.IntegerField(required=False)
+
+
+	def validate_checkout_token(self, value):
+		print type(value)
+		if type(value) == type(str()):
+			return value
+		raise serializers.ValidationError("This is not a valid token.")
+
+
 
 class CartVariationSerializer(serializers.ModelSerializer):
 	product = serializers.SerializerMethodField()
