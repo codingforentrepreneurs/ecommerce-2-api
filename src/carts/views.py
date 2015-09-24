@@ -40,14 +40,17 @@ from .serializers import CartItemSerializer, CheckoutSerializer
 
 """
 {
-	"order_token": "eydvcmRlcl9pZCc6IDUyLCAndXNlcl9jaGVja291dF9pZCc6IDExfQ==",
-	"payment_method_nonce": "abc123"
+	"order_token": "eydvcmRlcl9pZCc6IDU1LCAndXNlcl9jaGVja291dF9pZCc6IDExfQ==",
+	"payment_method_nonce": "2bd23ca6-ae17-4bed-85f6-4d00aabcc3b0"
 
 }
 
+
+Run Python server:
+
+python -m SimpleHTTPServer 8080
+
 """
-
-
 class CheckoutFinalizeAPIView(TokenMixin, APIView):
 	def get(self, request, format=None):
 		response = {}
@@ -90,8 +93,8 @@ class CheckoutFinalizeAPIView(TokenMixin, APIView):
 					success = result.is_success
 					if success:
 						#result.transaction.id to order
-						#order.mark_completed(order_id=result.transaction.id)
-						order.mark_completed(order_id="abc12344423")
+						order.mark_completed(order_id=result.transaction.id)
+						#order.mark_completed(order_id="abc12344423")
 						order.cart.is_complete()
 						response["message"] = "Your order has been completed."
 						response["final_order_id"] = order.order_id
