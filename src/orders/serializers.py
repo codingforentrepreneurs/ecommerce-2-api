@@ -53,6 +53,7 @@ class OrderSerializer(serializers.ModelSerializer):
 			"billing_address",
 			"shipping_total_price",
 			"subtotal",
+			"order_id",
 			"order_total",
 		]
 

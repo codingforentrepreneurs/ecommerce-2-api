@@ -7,7 +7,8 @@ from django.views.generic.detail import DetailView
 from  django.views.generic.list import ListView
 # Create your views here.
 
-from rest_framework.generics import CreateAPIView, ListAPIView
+from rest_framework.authentication import SessionAuthentication
+from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -18,7 +19,8 @@ from carts.mixins import TokenMixin
 from .forms import AddressForm, UserAddressForm
 from .mixins import CartOrderMixin, LoginRequiredMixin
 from .models import UserAddress, UserCheckout, Order
-from .serializers import UserAddressSerializer
+from .permissions import IsOwnerAndAuth
+from .serializers import UserAddressSerializer, OrderSerializer
 
 User = get_user_model()
 
@@ -29,6 +31,29 @@ Notes for changes.
 
 
 """
+
+class OrderRetrieveAPIView(RetrieveAPIView):
+	authentication_classes = [SessionAuthentication]
+	permission_classes = [IsOwnerAndAuth]
+	model = Order
+	queryset = Order.objects.all()
+	serializer_class = OrderSerializer
+
+	def get_queryset(self, *args, **kwargs):
+		return Order.objects.filter(user__user=self.request.user)
+
+
+class OrderListAPIView(ListAPIView):
+	authentication_classes = [SessionAuthentication]
+	permission_classes = [IsOwnerAndAuth]
+	model = Order
+	queryset = Order.objects.all()
+	serializer_class = OrderSerializer
+
+	def get_queryset(self, *args, **kwargs):
+		return Order.objects.filter(user__user=self.request.user)
+
+
 
 
 class UserAddressCreateAPIView(CreateAPIView):
