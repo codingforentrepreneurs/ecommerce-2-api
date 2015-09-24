@@ -48,7 +48,22 @@ from .serializers import CartItemSerializer, CheckoutSerializer
 """
 
 
-class CheckoutFinalizeAPIView(APIView):
+class CheckoutFinalizeAPIView(TokenMixin, APIView):
+	def get(self, request, format=None):
+		response = {}
+		order_token = request.GET.get('order_token')
+		if order_token:
+			checkout_id = self.parse_token(order_token).get("user_checkout_id")
+			if checkout_id:
+				checkout = UserCheckout.objects.get(id=checkout_id)
+				client_token = checkout.get_client_token()
+				response["client_token"] = client_token
+				return Response(response)
+		else:
+			response["message"] = "This method is not allowed"
+			return Response(response, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+
 	def post(self, request, format=None):
 		data = request.data
 		response = {}
