@@ -96,7 +96,7 @@ class Order(models.Model):
 	order_id = models.CharField(max_length=20, null=True, blank=True)
 
 	def __unicode__(self):
-		return str(self.cart.id)
+		return "Order_id: %s, Cart_id: %s"%(self.id, self.cart.id)
 
 	class Meta:
 		ordering = ['-id']

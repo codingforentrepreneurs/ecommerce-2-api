@@ -34,12 +34,12 @@ class CheckoutSerializer(TokenMixin, serializers.Serializer):
 
 		cart_token_data = self.parse_token(cart_token)
 		cart_id = cart_token_data.get("cart_id")
-		print cart_token_data
+		#print cart_token_data
 
 
 		checkout_data = self.parse_token(checkout_token)
 		user_checkout_id = checkout_data.get("user_checkout_id")
-		print checkout_data
+		#print checkout_data
 
 
 		try:

@@ -65,10 +65,10 @@ def do_api_test(email=None, user_auth=None):
 			"cart_token": cart_token,
 			"checkout_token": user_checkout_token
 		}
-		print data
+		#print data
 		order = requests.post(checkout_url, data=data)
 		#print order.headers
-		#print order.text
+		print order.text
 
 
 
