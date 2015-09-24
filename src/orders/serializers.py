@@ -15,7 +15,7 @@ from .models import UserAddress, Order
 
 class FinalizedOrderSerializer(TokenMixin, serializers.Serializer):
 	order_token = serializers.CharField()
-	nonce = serializers.CharField()
+	payment_method_nonce = serializers.CharField()
 	order_id =  serializers.IntegerField(required=False)
 	user_checkout_id = serializers.IntegerField(required=False)
 
@@ -33,9 +33,9 @@ class FinalizedOrderSerializer(TokenMixin, serializers.Serializer):
 		except:
 			raise serializers.ValidationError("This is not a valid order for this user.")
 
-		nonce = data.get("nonce"):
-		if nonce == None:
-			raise serializers.ValidationError("This is not a valid nonce")
+		payment_method_nonce = data.get("payment_method_nonce")
+		if payment_method_nonce == None:
+			raise serializers.ValidationError("This is not a valid payment method nonce")
 
 		return data
 	

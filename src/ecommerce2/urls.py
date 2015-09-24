@@ -7,6 +7,7 @@ from carts.views import (
         CartAPIView,
         CartView, 
         CheckoutAPIView,
+        CheckoutFinalizeAPIView,
         CheckoutView, 
         CheckoutFinalView,
         ItemCountView, 
@@ -57,6 +58,7 @@ urlpatterns += [
 
     url(r'^api/cart/$', CartAPIView.as_view(), name='cart_api'),
     url(r'^api/checkout/$', CheckoutAPIView.as_view(), name='checkout_api'),
+    url(r'^api/checkout/finalize/$', CheckoutFinalizeAPIView.as_view(), name='checkout_finalize_api'),
     url(r'^api/auth/token/$', 'rest_framework_jwt.views.obtain_jwt_token'),
     url(r'^api/auth/token/refresh/$', 'rest_framework_jwt.views.refresh_jwt_token'),
     url(r'^api/user/address/$', UserAddressListAPIView.as_view(), name='user_address_list_api'),

@@ -26,13 +26,72 @@ from rest_framework.views import APIView
 from orders.forms import GuestCheckoutForm
 from orders.mixins import CartOrderMixin
 from orders.models import UserCheckout, Order, UserAddress
-from orders.serializers import OrderSerializer
+from orders.serializers import OrderSerializer, FinalizedOrderSerializer
 from products.models import Variation
 
 
 from .mixins import TokenMixin, CartUpdateAPIMixin, CartTokenMixin
 from .models import Cart, CartItem
 from .serializers import CartItemSerializer, CheckoutSerializer
+
+
+# 
+# abc123
+
+"""
+{
+	"order_token": "eydvcmRlcl9pZCc6IDUyLCAndXNlcl9jaGVja291dF9pZCc6IDExfQ==",
+	"payment_method_nonce": "abc123"
+
+}
+
+"""
+
+
+class CheckoutFinalizeAPIView(APIView):
+	def post(self, request, format=None):
+		data = request.data
+		response = {}
+		serializer = FinalizedOrderSerializer(data=data)
+		if serializer.is_valid(raise_exception=True):
+			request_data = serializer.data
+			order_id = request_data.get("order_id")
+			order = Order.objects.get(id=order_id)
+			if not order.is_complete:
+				order_total = order.order_total
+				nonce = request_data.get("payment_method_nonce")
+				if nonce:
+					result = braintree.Transaction.sale({
+					    "amount": order_total,
+					    "payment_method_nonce": nonce,
+					    "billing": {
+						    "postal_code": "%s" %(order.billing_address.zipcode),
+						    
+						 },
+					    "options": {
+					        "submit_for_settlement": True
+					    }
+					})
+					success = result.is_success
+					if success:
+						#result.transaction.id to order
+						#order.mark_completed(order_id=result.transaction.id)
+						order.mark_completed(order_id="abc12344423")
+						order.cart.is_complete()
+						response["message"] = "Your order has been completed."
+						response["final_order_id"] = order.order_id
+						response["success"] = True
+					else:
+						#messages.success(request, "There was a problem with your order.")
+						error_message = result.message
+						#error_message = "Error"
+						response["message"] = error_message
+						response["success"] = False
+			else:
+				response["message"] = "Ordered has already been completed."
+				response["success"] = False
+
+		return Response(response)
 
 
 
