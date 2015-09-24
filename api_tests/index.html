@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <title>eCommerce 2 Test</title>
+  </head>
+  <body>
+
+  <div class="container">
+    <h1>Payment test</h1>
+    <form id="checkout"  method='POST' action=".">
+      <div id="payment-form"></div>
+      <input type='submit' value='Pay test' class='btn btn-default'>
+
+      </p>
+    </form>    
+  </div> <!-- /container -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+  var clientToken = "";
+
+  braintree.setup(clientToken, "dropin", {
+    container: "payment-form",
+    onPaymentMethodReceived: function (obj) {
+      console.log(obj.nonce)
+    }
+  });
+  </script>
+      
+  </body>
+</html>
+
+
+
