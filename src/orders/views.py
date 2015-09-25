@@ -20,7 +20,7 @@ from .forms import AddressForm, UserAddressForm
 from .mixins import CartOrderMixin, LoginRequiredMixin
 from .models import UserAddress, UserCheckout, Order
 from .permissions import IsOwnerAndAuth
-from .serializers import UserAddressSerializer, OrderSerializer
+from .serializers import UserAddressSerializer, OrderSerializer, OrderDetailSerializer
 
 User = get_user_model()
 
@@ -37,7 +37,7 @@ class OrderRetrieveAPIView(RetrieveAPIView):
 	permission_classes = [IsOwnerAndAuth]
 	model = Order
 	queryset = Order.objects.all()
-	serializer_class = OrderSerializer
+	serializer_class = OrderDetailSerializer
 
 	def get_queryset(self, *args, **kwargs):
 		return Order.objects.filter(user__user=self.request.user)
@@ -48,7 +48,7 @@ class OrderListAPIView(ListAPIView):
 	permission_classes = [IsOwnerAndAuth]
 	model = Order
 	queryset = Order.objects.all()
-	serializer_class = OrderSerializer
+	serializer_class = OrderDetailSerializer
 
 	def get_queryset(self, *args, **kwargs):
 		return Order.objects.filter(user__user=self.request.user)

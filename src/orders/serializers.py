@@ -41,6 +41,26 @@ class FinalizedOrderSerializer(TokenMixin, serializers.Serializer):
 	
 
 
+class OrderDetailSerializer(serializers.ModelSerializer):
+	url = serializers.HyperlinkedIdentityField(view_name="order_detail_api")
+	subtotal = serializers.SerializerMethodField()
+	class Meta:
+		model = Order
+		fields = [
+			"url",
+			"order_id",
+			"user",
+			"shipping_address",
+			"billing_address",
+			"shipping_total_price",
+			"subtotal",
+			"order_total",
+		]
+
+	def get_subtotal(self, obj):
+		return obj.cart.subtotal
+
+
 
 class OrderSerializer(serializers.ModelSerializer):
 	subtotal = serializers.SerializerMethodField()
@@ -53,7 +73,6 @@ class OrderSerializer(serializers.ModelSerializer):
 			"billing_address",
 			"shipping_total_price",
 			"subtotal",
-			"order_id",
 			"order_total",
 		]
 
