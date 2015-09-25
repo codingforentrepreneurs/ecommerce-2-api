@@ -55,6 +55,7 @@ urlpatterns = [
 
 ]
 
+
 #API Patterns
 urlpatterns += [
     url(r'^api/$', APIHomeView.as_view(), name='home_api'),
