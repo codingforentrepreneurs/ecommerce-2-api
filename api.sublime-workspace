@@ -4,6 +4,242 @@
 		"selected_items":
 		[
 			[
+				"re",
+				"return"
+			],
+			[
+				"Re",
+				"RetrieveAPIView"
+			],
+			[
+				"auth",
+				"authentication"
+			],
+			[
+				"res",
+				"rest_framework"
+			],
+			[
+				"permi",
+				"permission_classes"
+			],
+			[
+				"per",
+				"permissions"
+			],
+			[
+				"user",
+				"user"
+			],
+			[
+				"perm",
+				"permission_classes"
+			],
+			[
+				"ser",
+				"serializer_class"
+			],
+			[
+				"che",
+				"checkout"
+			],
+			[
+				"check",
+				"checkout_id"
+			],
+			[
+				"chec",
+				"checkout_id"
+			],
+			[
+				"order",
+				"order_token"
+			],
+			[
+				"fo",
+				"format"
+			],
+			[
+				"raise",
+				"raise_exception"
+			],
+			[
+				"is_",
+				"is_valid"
+			],
+			[
+				"respon",
+				"response"
+			],
+			[
+				"o",
+				"order_token"
+			],
+			[
+				"Seri",
+				"serializers"
+			],
+			[
+				"cart",
+				"cart_obj"
+			],
+			[
+				"User",
+				"UserAddress"
+			],
+			[
+				"use",
+				"user_checkout_id"
+			],
+			[
+				"Va",
+				"ValidationError"
+			],
+			[
+				"ship",
+				"shipping_address"
+			],
+			[
+				"bill",
+				"billing_address"
+			],
+			[
+				"bil",
+				"billing_obj"
+			],
+			[
+				"user_",
+				"user_checkout"
+			],
+			[
+				"user_ch",
+				"user_checkout_id"
+			],
+			[
+				"US",
+				"UserAddress"
+			],
+			[
+				"billing",
+				"billing_address"
+			],
+			[
+				"get_o",
+				"get_object_or_404"
+			],
+			[
+				"Cart",
+				"CartItem"
+			],
+			[
+				"get_or",
+				"get_or_create"
+			],
+			[
+				"token",
+				"token_param"
+			],
+			[
+				"response",
+				"response_status"
+			],
+			[
+				"cart_",
+				"cart_id"
+			],
+			[
+				"suc",
+				"success"
+			],
+			[
+				"new",
+				"new_cart_r"
+			],
+			[
+				"update",
+				"update_cart"
+			],
+			[
+				"is_a",
+				"is_authenticated"
+			],
+			[
+				"tax",
+				"tax_percentage"
+			],
+			[
+				"car",
+				"cart_obj"
+			],
+			[
+				"tokd",
+				"token_dict"
+			],
+			[
+				"to",
+				"token_data"
+			],
+			[
+				"it",
+				"items"
+			],
+			[
+				"get",
+				"get_cart"
+			],
+			[
+				"get_",
+				"get_token"
+			],
+			[
+				"create",
+				"create_token"
+			],
+			[
+				"base",
+				"base64"
+			],
+			[
+				"data",
+				"data_string"
+			],
+			[
+				"line_",
+				"line_item_total"
+			],
+			[
+				"item",
+				"item_id"
+			],
+			[
+				"ref",
+				"refresh_r"
+			],
+			[
+				"projects",
+				"projects_url"
+			],
+			[
+				"aut",
+				"authentication"
+			],
+			[
+				"Ca",
+				"CategorySerializer〔module〕"
+			],
+			[
+				"gen",
+				"generics"
+			],
+			[
+				"Cate",
+				"CategorySerizaler"
+			],
+			[
+				"ger",
+				"generics"
+			],
+			[
 				"wiki",
 				"wikipedia"
 			],
@@ -38,10 +274,6 @@
 			[
 				"Pro",
 				"ProductSerializer〔class〕"
-			],
-			[
-				"Va",
-				"VariationSerializer〔class〕"
 			],
 			[
 				"url",
@@ -104,10 +336,6 @@
 				"from_email"
 			],
 			[
-				"update",
-				"update_membership_plans"
-			],
-			[
 				"trans",
 				"transactions〔variable〕"
 			],
@@ -144,10 +372,6 @@
 				"BraintreeSubscription"
 			],
 			[
-				"get",
-				"get_queryset〔function〕"
-			],
-			[
 				"sup",
 				"subscription_"
 			],
@@ -176,10 +400,6 @@
 				"membership_instance〔variable〕"
 			],
 			[
-				"billing",
-				"billing_peiod_end"
-			],
-			[
 				"pending_su",
 				"pending_sub_result"
 			],
@@ -202,10 +422,6 @@
 			[
 				"plan",
 				"plan_id〔variable〕"
-			],
-			[
-				"create",
-				"create_or_update_subscription〔function〕"
 			],
 			[
 				"is",
@@ -292,270 +508,79 @@
 				"next_billing_date"
 			],
 			[
-				"get_",
-				"get_subs〔function〕"
-			],
-			[
 				"nex",
 				"next_billing_date__gt"
 			],
 			[
 				"last",
 				"last_year"
-			],
-			[
-				"Mu",
-				"MultipleObjectsReturned"
-			],
-			[
-				"act",
-				"active_status"
-			],
-			[
-				"curre",
-				"current_subscription〔variable〕"
-			],
-			[
-				"current_sub",
-				"current_subscription〔variable〕"
-			],
-			[
-				"Bt",
-				"BraintreeSubscription"
-			],
-			[
-				"month",
-				"monthly_plan"
-			],
-			[
-				"max",
-				"max_length"
-			],
-			[
-				"up",
-				"updated_at〔variable〕"
-			],
-			[
-				"Bra",
-				"BraintreeSubscriptionManager〔class〕"
-			],
-			[
-				"auto",
-				"auto_now"
-			],
-			[
-				"pl",
-				"plan_id"
-			],
-			[
-				"max_",
-				"max_length"
-			],
-			[
-				"cu",
-				"current_end_date"
-			],
-			[
-				"end",
-				"end_date"
-			],
-			[
-				"new_date",
-				"new_date_start"
-			],
-			[
-				"lo",
-				"login_required"
-			],
-			[
-				"bill",
-				"billing_period_end_date〔variable〕"
-			],
-			[
-				"am",
-				"amount"
-			],
-			[
-				"amount",
-				"amount_off"
-			],
-			[
-				"current",
-				"current_subscription〔variable〕"
-			],
-			[
-				"su",
-				"subscription_status"
-			],
-			[
-				"user",
-				"user_default〔variable〕"
-			],
-			[
-				"the",
-				"the_token〔variable〕"
-			],
-			[
-				"requ",
-				"requested_discount〔variable〕"
-			],
-			[
-				"disc",
-				"discount_exists〔variable〕"
-			],
-			[
-				"req",
-				"requested_discount〔variable〕"
-			],
-			[
-				"new",
-				"new_disc"
-			],
-			[
-				"brain",
-				"braintree〔module〕"
-			],
-			[
-				"post",
-				"post_save〔module〕"
-			],
-			[
-				"smart",
-				"smart_text〔function〕"
-			],
-			[
-				"User",
-				"UserDownloadAdmin"
-			],
-			[
-				"aut",
-				"auto_now"
-			],
-			[
-				"No",
-				"Notification〔module〕"
-			],
-			[
-				"noti",
-				"notify"
-			],
-			[
-				"not",
-				"notifications"
-			],
-			[
-				"que",
-				"question_deleted〔function〕"
-			],
-			[
-				"p",
-				"property	New Property"
-			],
-			[
-				"m",
-				"Model"
-			],
-			[
-				"cl",
-				"cloud_time"
-			],
-			[
-				"ex",
-				"exp_time"
-			],
-			[
-				"stre",
-				"stream_dist"
-			],
-			[
-				"buck",
-				"bucket_origin"
-			],
-			[
-				"en",
-				"encode_query_param"
-			],
-			[
-				"sec",
-				"seconds_expires"
-			],
-			[
-				"http",
-				"http_resource"
-			],
-			[
-				"object",
-				"object_name"
-			],
-			[
-				"se",
-				"seconds_expires"
-			],
-			[
-				"s3",
-				"s3_user_id"
-			],
-			[
-				"priv",
-				"priv_key_file"
-			],
-			[
-				"pr",
-				"priv_key_file"
-			],
-			[
-				"key",
-				"key_pair_id"
-			],
-			[
-				"Lec",
-				"LectureSerializer"
-			],
-			[
-				"view",
-				"view_name"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "src/ecommerce2/settings/local.py",
+			"file": "src/orders/views.py",
 			"settings":
 			{
-				"buffer_size": 3999,
+				"buffer_size": 7379,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/products/models.py",
+			"file": "src/orders/permissions.py",
 			"settings":
 			{
-				"buffer_size": 4830,
+				"buffer_size": 350,
+				"line_ending": "Unix",
+				"name": "f"
+			}
+		},
+		{
+			"file": "src/ecommerce2/urls.py",
+			"settings":
+			{
+				"buffer_size": 3608,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "",
-			"file": "src/products/serialiers.py",
-			"file_size": 159,
-			"file_write_time": 130864034330000000,
+			"file": "src/carts/views.py",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 14126,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/orders/serializers.py",
+			"settings":
+			{
+				"buffer_size": 2096,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/orders/models.py",
+			"settings":
+			{
+				"buffer_size": 3596,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/products/views.py",
+			"settings":
+			{
+				"buffer_size": 7726,
 				"line_ending": "Unix"
 			}
 		}
 	],
 	"build_system": "",
-	"build_system_choices":
-	[
-	],
-	"build_varint": "",
 	"command_palette":
 	{
 		"height": 392.0,
-		"last_filter": "m",
 		"selected_items":
 		[
 			[
@@ -567,15 +592,11 @@
 				"Package Control: List Packages"
 			]
 		],
-		"width": 593.0
+		"width": 392.0
 	},
 	"console":
 	{
-		"height": 125.0,
-		"history":
-		[
-			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
-		]
+		"height": 125.0
 	},
 	"distraction_free":
 	{
@@ -586,16 +607,41 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/Users/jmitch/Desktop/ecommerce-2-api",
-		"/Users/jmitch/Desktop/ecommerce-2-api/src",
-		"/Users/jmitch/Desktop/ecommerce-2-api/src/ecommerce2/settings",
-		"/Users/jmitch/Desktop/ecommerce-2-api/src/products"
-	],
 	"file_history":
 	[
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/products/serializers.py",
 		"/Users/jmitch/Desktop/ecommerce-2-api/src/ecommerce2/settings/local.py",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/ecommerce2/urls.py",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/orders/models.py",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/ecommerce2/api_tests.py",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/carts/serializers.py",
+		"/Users/jmitch/Desktop/ecommerce-2-api/api_tests/index.html",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/carts/views.py",
+		"/Users/jmitch/Desktop/ecommerce-2-api/api_tests/api_tests.py",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/carts/templates/carts/checkout_view.html",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/orders/serializers.py",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/carts/models.py",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/orders/views.py",
+		"/Users/jmitch/Desktop/ecommerce-2-api/api_tests/braintree_test.html",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/templates/javascript.html",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/templates/head_css.html",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/ecommerce2/old_settings.py",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/carts/mixins.py",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/orders/mixins.py",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/ecommerce2/utils.py",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/products/views.py",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/orders/templates/orders/order_detail.html",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/carts/tests.py",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/ecommerce2/__init__.py",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/products/pagination.py",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/products/filters.py",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/products/models.py",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/orders/forms.py",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/orders/admin.py",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/products/urls.py",
+		"/Users/jmitch/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/jmitch/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/jmitch/Desktop/ecommerce-2-api/src/products/serialiers.py",
 		"/Users/jmitch/Desktop/ecommerce-2-api/README.md",
 		"/Users/jmitch/Desktop/eCommerce 2 API.md",
 		"/Users/jmitch/Desktop/eCommerce 2 API.MD",
@@ -621,7 +667,6 @@
 		"/Users/jmitch/Dropbox/crux/src/crux/settings/production.py",
 		"/Users/jmitch/Dropbox/crux/src/dashboard/templates/dashboard/home.html",
 		"/Users/jmitch/Dropbox/crux/src/dashboard/templates/home.html",
-		"/Users/jmitch/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
 		"/Users/jmitch/Dropbox/crux/src/crux/s3utils.py",
 		"/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urlparse.py",
 		"/Users/jmitch/Dropbox/cfe/src/profiles/views.py",
@@ -691,38 +736,7 @@
 		"/Users/jmitch/Dropbox/cfe/src/projects/serializers.py",
 		"/Users/jmitch/Dropbox/cfe/src/api/urls.py",
 		"/Users/jmitch/Dropbox/cfe/src/marketing/middleware.py",
-		"/Users/jmitch/Google Drive/Projects/Django-to-iOS/Source/ios/Cartfile",
-		"/Users/jmitch/Dropbox/cfe/src/forum/templates/forum/sidebar.html",
-		"/Users/jmitch/Dropbox/cfe/src/forum/templates/forum/home.html",
-		"/Users/jmitch/Dropbox/cfe/src/projects/api.py",
-		"/Users/jmitch/Dropbox/cfe/src/projects/cloudfront.py",
-		"/Users/jmitch/Dropbox/cfe/src/templates/billing/billingaddress_list.html",
-		"/Users/jmitch/Dropbox/cfe/src/templates/pdfs/transaction_pdf.html",
-		"/Users/jmitch/Dropbox/cfe/src/profiles/mixins.py",
-		"/Users/jmitch/Dropbox/cfe/src/projects/urls.py",
-		"/Users/jmitch/Dropbox/cfe/src/billing/forms.py",
-		"/Users/jmitch/Dropbox/cfe/src/templates/form.html",
-		"/Users/jmitch/Dropbox/cfe/src/api/views.py",
-		"/Users/jmitch/Dropbox/cfe/src/profiles/admin.py",
-		"/Users/jmitch/Dropbox/cfe/src/cfe/api/urls.py",
-		"/Users/jmitch/Dropbox/cfe/src/cfe/api/views.py",
-		"/Users/jmitch/Dropbox/cfe/src/cfe/api/url.spy",
-		"/Users/jmitch/Dropbox/cfe/src/cfe/api/__init__.py",
-		"/Users/jmitch/Dropbox/cfe/src/templates/billing/billingaddress_confirm_delete.html",
-		"/Users/jmitch/Dropbox/cfe/src/forum/views.py",
-		"/Users/jmitch/Dropbox/cfe/src/forum/templates/home.html",
-		"/Users/jmitch/Dropbox/cfe/src/templates/profiles/payment_history.html",
-		"/Users/jmitch/Dropbox/cfe/src/cfe/stripe_info.py",
-		"/Users/jmitch/Dropbox/cfe/src/cfe/urls_ajax.py",
-		"/Users/jmitch/Dropbox/cfe/src/templates/home.html",
-		"/Users/jmitch/Dropbox/cfe/src/templates/billing/upgrade.html",
-		"/Users/jmitch/Dropbox/cfe/src/templates/home_old.html",
-		"/Users/jmitch/Dropbox/cfe/src/templates/profiles/subscribe.html",
-		"/Users/jmitch/Dropbox/cfe/src/templates/projects/downloads.html",
-		"/Users/jmitch/Dropbox/cfe/src/templates/projects/downloads_coming.html",
-		"/Users/jmitch/Dropbox/cfe/src/templates/projects/downloads_old.html",
-		"/Users/jmitch/Dropbox/cfe/src/templates/projects/downloads_project.html",
-		"/Users/jmitch/Dropbox/cfe/src/templates/projects/single_backup.html"
+		"/Users/jmitch/Google Drive/Projects/Django-to-iOS/Source/ios/Cartfile"
 	],
 	"find":
 	{
@@ -730,7 +744,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 99.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"/Users/jmitch/Dropbox/cfe/src/",
@@ -745,6 +759,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"address",
+			"REST",
 			"userdefault",
 			"is_braintree_member",
 			"get_member_type",
@@ -870,9 +886,7 @@
 			"delete_q",
 			"delete",
 			"delete_q_button",
-			"recent",
-			"next",
-			"dashboard.html"
+			"recent"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -906,50 +920,18 @@
 			[
 				{
 					"buffer": 0,
-					"file": "src/ecommerce2/settings/local.py",
-					"semi_transient": false,
+					"file": "src/orders/views.py",
 					"settings":
 					{
-						"buffer_size": 3999,
+						"buffer_size": 7379,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1523,
-								1537
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 485.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/products/models.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4830,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3520,
-								3528
+								1547,
+								1547
 							]
 						],
 						"settings":
@@ -958,19 +940,126 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1684.0,
+						"translation.y": 396.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/orders/permissions.py",
+					"settings":
+					{
+						"buffer_size": 350,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								221,
+								221
+							]
+						],
+						"settings":
+						{
+							"auto_name": "f",
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "src/products/serialiers.py",
-					"semi_transient": false,
+					"file": "src/ecommerce2/urls.py",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 3608,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2043,
+								2043
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1014.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/carts/views.py",
+					"settings":
+					{
+						"buffer_size": 14126,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4435,
+								4442
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2335.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/orders/serializers.py",
+					"settings":
+					{
+						"buffer_size": 2096,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1388,
+								1388
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 875.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/orders/models.py",
+					"settings":
+					{
+						"buffer_size": 3596,
 						"regions":
 						{
 						},
@@ -983,14 +1072,40 @@
 						],
 						"settings":
 						{
-							"auto_complete": false,
-							"syntax": "Packages/Python/Python.tmLanguage"
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 314.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/products/views.py",
+					"settings":
+					{
+						"buffer_size": 7726,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2297,
+								2297
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1095.0,
+						"zoom_level": 1.0
+					},
 					"type": "text"
 				}
 			]
@@ -1031,8 +1146,6 @@
 	{
 		"height": 182.0
 	},
-	"pinned_build_system": "",
-	"project": "api.sublime-project",
 	"replace":
 	{
 		"height": 46.0
@@ -1041,7 +1154,6 @@
 	"select_file":
 	{
 		"height": 0.0,
-		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -1050,32 +1162,15 @@
 	"select_project":
 	{
 		"height": 0.0,
-		"last_filter": "",
 		"selected_items":
 		[
 		],
 		"width": 0.0
-	},
-	"select_symbol":
-	{
-		"height": 0.0,
-		"last_filter": "",
-		"selected_items":
-		[
-		],
-		"width": 0.0
-	},
-	"selected_group": 0,
-	"settings":
-	{
 	},
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 224.0,
-	"status_bar_visible": true,
-	"template_settings":
-	{
-	}
+	"status_bar_visible": true
 }
